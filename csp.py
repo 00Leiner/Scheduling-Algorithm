@@ -40,7 +40,8 @@ class CSPAlgorithm:
     _assignmnet_domain = assignmnet_domain(self.student_curriculum, self.teachers,self.course_type, self.rooms, self.days, self.timeslots)
     self.domain_schedule = _assignmnet_domain.assignment_domain()
 
-  def backtracking_search(self, num_solutions):
+  def backtracking_search(self):
+    num_solutions = 2 #number of solutions you want to implement
     solutions = []
     self.backtrack({}, solutions, num_solutions)
     return solutions
