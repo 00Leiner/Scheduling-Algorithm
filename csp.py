@@ -36,12 +36,12 @@ class CSPAlgorithm:
     self.students_schedule = student_availability_domain(self.students, self.days, self.timeslots)
     self.rooms_schedule = room_availability_domain(self.rooms, self.days, self.timeslots)
     self.course_unit = {course['code']: course['units'] for course in self.courses}
-    self.course_type = {course['code']: course['types'] for course in self.courses}
+    self.course_type = {course['code']: course['type'] for course in self.courses}
 
     _assignmnet_domain = assignmnet_domain(self.student_curriculum, self.teachers,self.course_type, self.rooms, self.days, self.timeslots)
     self.domain_schedule = _assignmnet_domain.assignment_domain()
 
-  def backtracking_search(self, num_solutions=5):
+  def backtracking_search(self, num_solutions=1):
     solutions = []
     self.backtrack({}, solutions, num_solutions)
     return solutions

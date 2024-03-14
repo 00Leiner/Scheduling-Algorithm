@@ -3,23 +3,23 @@ courses = [{
     "code": "cs1",
     "description": "cs1des",
     "units": "3",
-    "types": "laboratory"
+    "type": "Laboratory"
 }, {
     "_id": "2",
     "code": "cs2",
     "description": "cs2des",
     "units": "3",
-    "types": "lecture"
+    "type": "Lecture"
 }]
 
 rooms = [{
     "_id": "1",
     "name": "room1",
-    "types": "laboratory"
+    "type": "Laboratory"
 },{
     "_id": "2",
     "name": "room2",
-    "types": "lecture"
+    "type": "Lecture"
 }]
 
 students = [{
@@ -38,13 +38,13 @@ students = [{
       "code": "cs1",
       "description": "cs1des",
       "units": "3",
-      "types": "laboratory"
+      "type": "Laboratory"
     }, {
                    "_id": "2",
                    "code": "cs2",
                    "description": "cs2des",
                    "units": "3",
-                   "types": "laboratory"
+                   "type": "Laboratory"
                }]
 }]
 
@@ -58,12 +58,12 @@ teachers = [{
         "code": "cs1",
         "description": "cs1des",
         "units": "3",
-        "types": "laboratory"
+        "type": "Laboratory"
     }, {
         "_id": "2",
         "code": "cs2",
         "description": "cs2des",
         "units": "3",
-        "types": "lecture"
+        "type": "Lecture"
     }]
 }]

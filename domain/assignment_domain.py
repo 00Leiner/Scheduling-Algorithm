@@ -30,7 +30,7 @@ class assignmnet_domain:
             course_type = self.course_type[course_code]
             rooms_for_first_day = self.room_assignment(course_type)
 
-            rooms_for_second_day = self.room_assignment('lecture')
+            rooms_for_second_day = self.room_assignment('Lecture')
 
             first_sched = self.first_day_schedule(course_code)
 
@@ -49,22 +49,22 @@ class assignmnet_domain:
     def room_assignment(self, course_type):
         set_of_room = []
         for room in self.rooms:
-            if room['types'] == course_type:
+            if room['type'] == course_type:
                 set_of_room.append(room['_id'])
-                return room['_id']
+        return set_of_room
 
     def first_day_schedule(self, course_code):
-        type = self.course_type[course_code]
+        _type = self.course_type[course_code]
         list_of_timeslots = list(self.timeslots)
         time_schedule = []
-        if type == 'laboratory':
+        if _type == 'Laboratory':
             #3 hours in laboratory
             for day in self.days:
                 for i in range(len(list_of_timeslots) - 3):
                     set_of_3 = (day, (list_of_timeslots[i], list_of_timeslots[i + 3]))
                     time_schedule.append(set_of_3)
         
-        if type == 'lecture':
+        if _type == 'Lecture':
             #3 hours in lecture
             for day in self.days:
                 for i in range(len(list_of_timeslots) - 2):
@@ -74,7 +74,7 @@ class assignmnet_domain:
         return time_schedule
 
     def second_day_schedule(self, course_code, first_day):
-        type = self.course_type[course_code]
+        _type = self.course_type[course_code]
         list_of_timeslots = list(self.timeslots)
         list_of_days = list(self.days)
 
@@ -83,7 +83,7 @@ class assignmnet_domain:
         second_day_index = (first_day_index + 4) % len(list_of_days)
         second_day = list_of_days[second_day_index]
 
-        if type == 'laboratory':
+        if _type == 'Laboratory':
             # 2 hours in lecture
             sets_of_time_in_lecture = []
             for i in range(len(list_of_timeslots) - 2):
@@ -91,7 +91,7 @@ class assignmnet_domain:
                 sets_of_time_in_lecture.append(_timeslot)
             return sets_of_time_in_lecture
 
-        if type == 'lecture':
+        if _type == 'Lecture':
             # 2 hours in lecture
             sets_of_time_in_lecture = []
             for i in range(len(list_of_timeslots) - 1):
