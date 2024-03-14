@@ -10,11 +10,9 @@ if __name__ == "__main__":
   courses = fetch_course_data()
   teachers = fetch_teacher_data()
   rooms = fetch_room_data()
-  '''
-  students = data.students
-  courses = data.courses
-  teachers = data.teachers
-  rooms = data.rooms
-'''
-  #scheduling.Scheduling(students, courses, teachers, rooms)
-  csp.CSPAlgorithm(students, courses, teachers, rooms)
+
+  csp_solver = csp.CSPAlgorithm(students, courses, teachers, rooms)
+  result = csp_solver.backtracking_search(2) # the value is the number of options or solutions you want
+  for teacher_id in result:
+    for r in teacher_id:
+      print(r)

@@ -28,7 +28,6 @@ class CSPAlgorithm:
     self.course_type = {}  #dictionarry to define course type
     self.initialize_domains()
     self.backtracking_search()
-    print(self.backtracking_search())
 
   def initialize_domains(self):
     self.student_curriculum = student_curriculum_domain(self.students)
@@ -41,7 +40,7 @@ class CSPAlgorithm:
     _assignmnet_domain = assignmnet_domain(self.student_curriculum, self.teachers,self.course_type, self.rooms, self.days, self.timeslots)
     self.domain_schedule = _assignmnet_domain.assignment_domain()
 
-  def backtracking_search(self, num_solutions=1):
+  def backtracking_search(self, num_solutions):
     solutions = []
     self.backtrack({}, solutions, num_solutions)
     return solutions
@@ -56,6 +55,7 @@ class CSPAlgorithm:
     list_domain_schedule = self.domain_schedule
     if len(assignment) == len(list_domain_schedule):
         # Solution found, append it to the list of solutions
+      
         solutions.append(assignment.copy())  # Use copy to avoid modifying the original assignment
         return
 
