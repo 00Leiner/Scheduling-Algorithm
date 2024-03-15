@@ -50,6 +50,7 @@ class CSPAlgorithm:
     teacher_details = {teacher['_id']: teacher for teacher in self.teachers}
     room_details = {room['_id']: room for room in self.rooms}
     formatted_data = formatting_data( solutions, student_details, course_details, teacher_details, room_details)
+    
     return formatted_data
 
   def backtrack(self, assignment, solutions, num_solutions):
