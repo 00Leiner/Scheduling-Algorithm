@@ -7,6 +7,7 @@ from constraints.unassigned_course import select_unassigned_course
 from constraints.schedule import update_schedule
 from constraints.schedule import undo_update_schedule
 from constraints.validate_assignmnet import validate_assignmnet
+from _data_format.data_format import formatting_data
 
 class CSPAlgorithm:
 
@@ -44,7 +45,12 @@ class CSPAlgorithm:
     num_solutions = 2 #number of solutions you want to implement
     solutions = []
     self.backtrack({}, solutions, num_solutions)
-    return solutions
+    student_details = {student['_id']: student for student in self.students}
+    course_details = {course['code']: course for course in self.courses}
+    teacher_details = {teacher['_id']: teacher for teacher in self.teachers}
+    room_details = {room['_id']: room for room in self.rooms}
+    formatted_data = formatting_data( solutions, student_details, course_details, teacher_details, room_details)
+    return formatted_data
 
   def backtrack(self, assignment, solutions, num_solutions):
     validate = validate_assignmnet(self.teachers_schedule, self.rooms_schedule, self.students_schedule, self.days)
